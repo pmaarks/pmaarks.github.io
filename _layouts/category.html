@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <div class="back-space" onclick="document.location.href='/'"><</div>
+        <div class="post-list">
+            <h1>{{ page.title }}</h1>
+            {% for post in site.posts %}
+                {% if post.categories[0] == page.title %}
+                <div class="post-nav" onclick="document.location.href='{{ post.url }}'">
+                    <p class="post-title">{{ post.title }}</p>
+                    <p class="post-summary">{{ post.summary }}</p>
+                    <p class="post-date">{{ post.date | date_to_string }}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        
+        <!-- <div class="divider"></div> -->
+        <!-- <div class="post-content">
+            {{ content }}
+        </div> -->
+    
+</body>
+</html>

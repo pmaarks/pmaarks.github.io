@@ -1,0 +1,8 @@
+<div>
+    <p class="category-title">ME</p>
+      <div class="category-wrapper">
+      {% for item in site.data.navigation_me %}
+        <div onclick={{ item.link }} class="me-nav"><p class="nav-title">{{ item.name }}</p></div>
+      {% endfor %}
+      </div>
+  </div>

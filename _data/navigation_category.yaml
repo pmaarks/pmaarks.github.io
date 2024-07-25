@@ -1,0 +1,12 @@
+- name: JavaScript
+  link: document.location.href='category/javascript.html'
+
+- name: Python
+  link: document.location.href='category/python.html'
+
+- name: etc.
+  link: document.location.href='category/etc.html'
+
+- name: Experiments
+  link: document.location.href='category/experiments.html'
+

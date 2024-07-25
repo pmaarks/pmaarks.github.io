@@ -1,0 +1,8 @@
+- name: Github
+  link: document.location.href='https://github.com/pmaarks'
+
+- name: Solved.ac
+  link: document.location.href='https://solved.ac/profile/pms6424'
+
+- name: Instagram
+  link: document.location.href='https://www.instagram.com/pmaarks/'
