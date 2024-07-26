@@ -6,7 +6,31 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    <div class="back-space" onclick="window.history.back()"><</div>
+    <div class="floating-buttons">
+        <div class="link-buttons">
+            <div class="menu-bar">
+                <img src="../../../../assets/icons/menu-bar.png" class="inner-icon">
+            </div>
+            <div class="home">
+                <img src="../../../../assets/icons/home.png" class="inner-icon" onclick="document.location.href='/'">
+            </div>
+        </div>
+        <div class="nav-bar" style="left: -310px;">
+            <p class="nav-bar-title">CATEGORY</p>
+            {% for item in site.data.navigation_category %}
+                {% if item.name == 'etc.' %}
+                    <p class="nav-bar-component" onclick="document.location.href='etc'">{{ item.name }}</p>
+                    {% else %}
+                        <p class="nav-bar-component" onclick="document.location.href='{{ item.name | downcase }}'">{{ item.name }}</p>
+                {% endif %}
+            {% endfor %}
+            <div class="nav-bar-spacer"></div>
+            <p class="nav-bar-title">ME</p>
+            {% for item in site.data.navigation_me %}
+                <p class="nav-bar-component" onclick="{{ item.link }}">{{ item.name }}</p>
+            {% endfor %}
+        </div>
+    </div>
     <div class="post-view-wrapper">
         <h1 class="post-view-title">{{ page.title }}</h1>
         <p class="post-view-date">{{ page.date | date_to_string }}</p>
@@ -17,6 +41,31 @@
         </div>
         <div class="post-view-content">{{ content }}</div>
     </div>
-        
+    <script class="post-comments"
+        src="https://giscus.app/client.js"
+        data-repo="pmaarks/pmaarks.github.io"
+        data-repo-id="R_kgDOMZNtdA"
+        data-category="Comments"
+        data-category-id="DIC_kwDOMZNtdM4ChMSi"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="ko"
+        crossorigin="anonymous"
+        async>
+    </script>
+    <script>
+        document.getElementsByClassName('menu-bar')[0].addEventListener('click', function() {
+            let navBar = document.getElementsByClassName('nav-bar')[0];
+            if (navBar.style.left == '-310px') {
+                navBar.style.left = '0px';
+            } else {
+                navBar.style.left = '-310px';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,8 +1,21 @@
-<div>
+<!-- <div>
+  <div id="me-title-wrapper">
     <p class="category-title">ME</p>
+    <p id="me-title-email">pms6413@gmail.com</p>
+  </div>
       <div class="category-wrapper">
       {% for item in site.data.navigation_me %}
-        <div onclick={{ item.link }} class="me-nav"><p class="nav-title">{{ item.name }}</p></div>
+        <div onclick="{{ item.link }}" class="me-nav"><p class="nav-title">{{ item.name }}</p></div>
       {% endfor %}
       </div>
-  </div>
+</div> -->
+
+<div class="footer">
+  <a class="me-info">pms6413@gmail.com</a >
+  <div class="divider-me"></div>
+  <a class="me-info" href="https://github.com/pmaarks">Github</a>
+  <div class="divider-me"></div>
+  <a class="me-info" href="https://www.instagram.com/pmaarks/">Instagram</a>
+  <div class="divider-me"></div>
+  <a class="me-info" href="https://solved.ac/profile/pms6424">solved.ac</a>
+</div>

@@ -2,7 +2,7 @@
   <p class="category-title">CATEGORY</p>
     <div class="category-wrapper">
     {% for item in site.data.navigation_category %}
-      <div onclick={{ item.link }} class="category-nav"><p class="nav-title">{{ item.name }}</p></div>
+      <div onclick="{{ item.link }}" class="category-nav"><p class="nav-title">{{ item.name }}</p></div>
     {% endfor %}
     </div>
 </div>

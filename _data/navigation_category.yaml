@@ -4,9 +4,17 @@
 - name: Python
   link: document.location.href='category/python.html'
 
+- name: React
+  link: document.location.href='category/react.html'
+
 - name: etc.
   link: document.location.href='category/etc.html'
 
+- name: Books
+  link: document.location.href='category/books.html'
+
 - name: Experiments
   link: document.location.href='category/experiments.html'
+
+
 
