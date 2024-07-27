@@ -13,6 +13,95 @@ body {
     margin: 0;
     top: 0;
     right: 0;
+    cursor: default;
+}
+
+.latest-post-view {
+    width: 85vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.latest-posts-title-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.latest-posts-title {
+    text-align: left;
+    margin: 0;
+    font-size: 25px;
+    color: #000000;
+}
+
+.latest-posts-show-all {
+    font-size: 25px;
+}
+
+.latest-posts-category-button-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.latest-posts-category-button {
+    display: flex;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-top: 0;
+    margin-bottom: 2px;
+    color: #9b9b9b;
+}
+
+.latest-posts-category-button:hover {
+    display: flex;
+    font-size: 15px;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    color: #777777;
+    text-decoration: none;
+}
+
+.latest-posts {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 15%;
+    transition: all 0.2s;
+}
+
+.latest-post-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.latest-post-title {
+    font-size: 30px;
+    margin: 0;
+}
+
+.latest-post-summary {
+    font-size: 20px;
+    color: #777777;
+    margin: 0;
+}
+
+.latest-post-date {
+    font-size: 15px;
+    color: #9b9b9b;
+    margin: 0;
+}
+
+.latest-post-divider {
+    background-color: #A0A0A0;
+    width: 100%;
+    height: 1px;
+    margin-bottom: 15px;
 }
 
 .category-title {
@@ -43,6 +132,7 @@ body {
     background-color: #44904B;
     color: #FFFFFF;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 .category-nav:hover {
@@ -79,7 +169,7 @@ body {
 .footer {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
     margin-bottom: 0;
 }
@@ -94,15 +184,15 @@ a:link {
 }
    
 a:visited {
-text-decoration: none;
+    text-decoration: none;
 }
 
 a:hover {
-text-decoration: underline;
+    text-decoration: underline;
 }
 
 a:active {
-text-decoration: underline;
+    text-decoration: underline;
 }
 
 a:hover {
@@ -332,5 +422,5 @@ hr {
 
 .giscus {
     margin: auto;
-    width: 80vw;
+    width: 85vw;
 }
