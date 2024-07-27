@@ -49,8 +49,11 @@
             let navBar = document.getElementsByClassName('nav-bar')[0];
             if (navBar.style.left == '-310px') {
                 navBar.style.left = '0px';
+                navBar.style.zIndex = 99;
+                
             } else {
                 navBar.style.left = '-310px';
+                navBar.style.zIndex = -99;
             }
         });
     </script>

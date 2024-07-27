@@ -56,10 +56,6 @@ body {
 }
 
 .latest-posts-category-button:hover {
-    display: flex;
-    font-size: 15px;
-    border-radius: 8px;
-    margin-bottom: 2px;
     color: #777777;
     text-decoration: none;
 }
@@ -195,10 +191,6 @@ a:active {
     text-decoration: underline;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
 .spacer {
     height: 50px;
 }
@@ -220,7 +212,6 @@ hr {
     display: flex;
     flex-direction: column;
     position: absolute;
-    z-index: 99;
 }
 
 .link-buttons {
@@ -228,6 +219,7 @@ hr {
     flex-direction: row;
     gap: 10px;
     margin-bottom: 20px;
+    z-index: 99;
 }
 
 .back-space {
@@ -303,6 +295,7 @@ hr {
 }
 
 .nav-bar {
+    z-index: -1;
     position: relative;
     border-radius: 20px;
     padding: 5px;
@@ -400,16 +393,25 @@ hr {
     margin-left: auto;
 }
 
-.category-button-wrapper{
+.category-button-wrapper {
     display: flex;
     flex-direction: row;
 }
 
 .category-button {
+    display: flex;
     font-size: 15px;
-    background-color: #A0A0A0;
-    padding: 3px;
     border-radius: 8px;
+    margin-top: 0;
+    margin-bottom: 2px;
+    color: #9b9b9b;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.category-button:hover {
+    color: #777777;
+    text-decoration: none;
 }
 
 .post-view-tag{
@@ -418,6 +420,7 @@ hr {
 
 .post-view-content{
     font-size: 18px;
+    position: relative;
 }
 
 .giscus {
