@@ -1,0 +1,19 @@
+<div class="latest-post-view">
+    <div class="latest-posts-title-wrapper">
+        <a class="latest-posts-title" href="category/latest-posts.html">Latest Posts  ></a>
+    </div>
+        
+    {% for post in site.posts limit:4 %}
+        <div class="latest-posts-category-button-wrapper">
+            <a class="latest-posts-category-button" href="category/{{ post.categories[0] | downcase }}">{{ post.categories[0] }}</a>
+        </div>
+        <div class="latest-posts" onclick="document.location.href='{{ post.url }}'">
+            <div class="latest-post-wrapper">
+                <p class="latest-post-title">{{ post.title }}</p>
+                <p class="latest-post-summary">{{ post.summary }}</p>
+                <p class="latest-post-date">{{ post.date | date_to_string }}</p>
+            </div>
+        </div>
+        <div class="latest-post-divider"></div>
+    {% endfor %}
+</div>
