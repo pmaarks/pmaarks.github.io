@@ -5,7 +5,11 @@
         
     {% for post in site.posts limit:4 %}
         <div class="latest-posts-category-button-wrapper">
-            <a class="latest-posts-category-button" href="category/{{ post.categories[0] | downcase }}">{{ post.categories[0] }}</a>
+            {% if post.categories[0] == 'etc.' %}
+            <a class="latest-posts-category-button" href="category/etc.html">{{ post.categories[0] }}</a>
+                {% else %}
+                <a class="latest-posts-category-button" href="category/{{ post.categories[0] | downcase }}">{{ post.categories[0] }}</a>
+            {% endif %}
         </div>
         <div class="latest-posts" onclick="document.location.href='{{ post.url }}'">
             <div class="latest-post-wrapper">
@@ -17,3 +21,10 @@
         <div class="latest-post-divider"></div>
     {% endfor %}
 </div>
+
+
+{% if item.name == 'etc.' %}
+    <p class="nav-bar-component" onclick="document.location.href='etc'">{{ item.name }}</p>
+    {% else %}
+        <p class="nav-bar-component" onclick="document.location.href='{{ item.name | downcase }}'">{{ item.name }}</p>
+{% endif %}
