@@ -428,9 +428,14 @@ hr {
     width: 85vw;
 }
 
-.post-image {
+.post-image-wrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: auto;
+}
+
+.image {
     margin: auto;
 }
 
