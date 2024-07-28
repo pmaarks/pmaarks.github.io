@@ -381,7 +381,6 @@ hr {
     flex-direction: column;
     margin: auto;
     width: 80vw;
-    height: 100vh;
 }
 
 .post-view-title{
@@ -428,3 +427,9 @@ hr {
     margin: auto;
     width: 85vw;
 }
+
+img + em {
+    text-align: center;
+    font-size: .8rem;
+    color: $grey-color-light;
+  }
