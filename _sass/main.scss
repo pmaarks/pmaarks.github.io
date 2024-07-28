@@ -80,6 +80,7 @@ body {
 .latest-post-title {
     font-size: 30px;
     margin: 0;
+    margin-bottom: 20px;
 }
 
 .latest-post-summary {
@@ -433,6 +434,7 @@ hr {
     flex-direction: column;
     width: 100%;
     margin: auto;
+    gap: 2px;
 }
 
 .image {
@@ -441,6 +443,6 @@ hr {
 
 .caption {
     text-align: center;
-    font-size: .9rem;
+    font-size: 17px;
     color: lightgray;
   }
