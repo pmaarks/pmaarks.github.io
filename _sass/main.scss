@@ -428,6 +428,11 @@ hr {
     width: 85vw;
 }
 
+.post-img {
+    display: flex;
+    flex-direction: column;
+}
+
 .caption {
     text-align: center;
     font-size: .9rem;
