@@ -75,6 +75,12 @@ body {
     flex-direction: row;
     align-items: baseline;
     gap: 15px;
+    transition: all 0.2s;
+}
+
+.latest-post-wrapper:hover {
+    background-color: #cccccc;
+    transition: all 0.2s;
 }
 
 .latest-post-title {
