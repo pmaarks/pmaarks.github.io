@@ -451,4 +451,53 @@ hr {
     text-align: center;
     font-size: 17px;
     color: lightgray;
-  }
+}
+
+.books-space {
+    width: 80vw;
+    margin: auto;
+}
+
+.book-grid {
+    display: grid;
+    margin: auto;
+    width: 80vw;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px;
+    place-items: center center;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 20px;
+    background-color: #FFC400;
+    width: 90%;
+    height: 90%;
+    padding: 20px;
+    transition: all 0.2s;
+    place-items: center center;
+}
+
+.book-cover {
+    width: 50%;
+    height: 80%;
+    border-radius: 5px;
+}
+
+.book-info {
+    text-align: left;
+    width: 100%;
+}
+
+.book-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.book-author {
+    font-size: 20px;
+}

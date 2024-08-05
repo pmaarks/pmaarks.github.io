@@ -3,8 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    
+    <div class="floating-buttons">
+        <div class="link-buttons">
+            <div class="menu-bar">
+                <img src="../../../../assets/icons/menu-bar.png" class="inner-icon">
+            </div>
+            <div class="home">
+                <img src="../../../../assets/icons/home.png" class="inner-icon" onclick="document.location.href='/'">
+            </div>
+        </div>
+        <div class="nav-bar" style="left: -310px;">
+            <p class="nav-bar-title">CATEGORY</p>
+            {% for item in site.data.navigation_category %}
+                {% if item.name == 'etc.' %}
+                    <p class="nav-bar-component" onclick="document.location.href='etc'">{{ item.name }}</p>
+                    {% else %}
+                        <p class="nav-bar-component" onclick="document.location.href='{{ item.name | downcase }}'">{{ item.name }}</p>
+                {% endif %}
+            {% endfor %}
+            <div class="nav-bar-spacer"></div>
+            <p class="nav-bar-title">ME</p>
+            {% for item in site.data.navigation_me %}
+                <p class="nav-bar-component" onclick="{{ item.link }}">{{ item.name }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="books-space">
+        <h1>{{ page.title }}</h1>
+        <div class="book-grid">
+            {% for book in site.data.books %}
+                <div class="book-card">
+                    <img class="book-cover" src="{{ book.cover }}">
+                    <div class="book-info">
+                        <p class="book-title">{{ book.title }}</p>
+                        <p class="post-author">- {{ book.author }}</p>
+                    </div>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        document.getElementsByClassName('menu-bar')[0].addEventListener('click', function() {
+            let navBar = document.getElementsByClassName('nav-bar')[0];
+            if (navBar.style.left == '-310px') {
+                navBar.style.left = '0px';
+                navBar.style.zIndex = 99;
+                
+            } else {
+                navBar.style.left = '-310px';
+                navBar.style.zIndex = -99;
+            }
+        });
+    </script>
 </body>
 </html>
