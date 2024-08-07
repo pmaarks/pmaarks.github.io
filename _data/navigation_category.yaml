@@ -7,6 +7,9 @@
 - name: React
   link: document.location.href='category/react.html'
 
+- name: Algorithm
+  link: document.location.href='category/algorithm.html'
+
 - name: etc.
   link: document.location.href='category/etc.html'
 

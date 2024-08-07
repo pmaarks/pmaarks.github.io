@@ -349,17 +349,20 @@ hr {
     display: flex;
     flex-direction: column;
     position: relative;
-    border-radius: 20px;
-    background-color: #FFC400;
+    // border-radius: 20px;
+    // background-color: #FFC400;
     width: 100%;
     height: 15%;
     margin-top: 5px;
     margin-bottom: 5px;
     transition: all 0.2s;
+    border-bottom: solid 1px;
+    border-color: #A0A0A0;;
 }
 
 .post-nav:hover {
-    background-color: #bb8f00;
+    // background-color: #bb8f00;
+    background-color: #cccccc;
     transition: all 0.2s;
 }
 
