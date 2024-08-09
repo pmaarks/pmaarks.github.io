@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    <div class="floating-buttons">
+    <div class="floatings">
         <div class="link-buttons">
             <div class="menu-bar">
                 <img src="../../../../assets/icons/menu-bar.png" class="inner-icon">
@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="post-list">
-        <h1>{{ page.title }}</h1>
+        <h1 class="post-category-page-title">{{ page.title }}</h1>
         {% for post in site.posts %}
             {% if post.categories[0] == page.title %}
             <div class="post-nav" onclick="document.location.href='{{ post.url }}'">
@@ -51,7 +51,8 @@
                 navBar.style.left = '0px';
                 navBar.style.zIndex = 99;
                 
-            } else {
+            }
+            else {
                 navBar.style.left = '-310px';
                 navBar.style.zIndex = -99;
             }

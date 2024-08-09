@@ -17,6 +17,10 @@ body {
     cursor: default;
 }
 
+#blog-title {
+    cursor: default;
+}
+
 .latest-post-view {
     width: 85vw;
     margin: auto;
@@ -113,6 +117,7 @@ body {
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 15px;
+    cursor: default;
 }
 
 .category-wrapper {
@@ -216,7 +221,7 @@ hr {
     background-color: #8b8b8b;
 }
 
-.floating-buttons {
+.floatings {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -229,6 +234,7 @@ hr {
     gap: 10px;
     margin-bottom: 20px;
     z-index: 99;
+    position: fixed;
 }
 
 .back-space {
@@ -304,14 +310,15 @@ hr {
 }
 
 .nav-bar {
-    z-index: -1;
-    position: relative;
+    z-index: -99;
+    position: fixed;
     border-radius: 20px;
     padding: 5px;
     width: 290px;
     height: 600px;
     background-color: lightgray;
     transition: all 0.3s ease;
+    top: 55px;
 }
 
 .nav-bar-title{
@@ -327,6 +334,7 @@ hr {
     margin: 0;
     margin-left: 30px;
     opacity: 50%;
+    cursor: pointer;
 }
 
 .nav-bar-component:hover{
@@ -345,6 +353,10 @@ hr {
     height: 100vh;
 }
 
+.post-category-page-title {
+    cursor: default;
+}
+
 .post-nav {
     display: flex;
     flex-direction: column;
@@ -357,7 +369,8 @@ hr {
     margin-bottom: 5px;
     transition: all 0.2s;
     border-bottom: solid 1px;
-    border-color: #A0A0A0;;
+    border-color: #A0A0A0;
+    cursor: pointer;
 }
 
 .post-nav:hover {
@@ -392,6 +405,7 @@ hr {
     flex-direction: column;
     margin: auto;
     width: 80vw;
+    cursor: default;
 }
 
 .post-view-title{
