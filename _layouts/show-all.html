@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
+    <div class="dark-mode">
+        <img src="../../../../assets/icons/dark-mode-off.png" id="dark-mode-icon">
+    </div>
     <div class="floating-buttons">
         <div class="link-buttons">
             <div class="menu-bar">
@@ -32,7 +35,7 @@
         </div>
     </div>
     <div class="post-list">
-        <h1>{{ page.title }}</h1>
+        <h1 id="post-category-page-title">{{ page.title }}</h1>
         {% for post in site.posts %}
             <div class="post-nav" onclick="document.location.href='{{ post.url }}'">
                 <p class="post-title">{{ post.title }}</p>
@@ -52,5 +55,37 @@
             }
         });
     </script>
+    <script>
+        const setDarkMode = (isOn) => {
+          if (isOn == "true"){
+            document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-on.png";
+            document.body.classList.add('dark');
+            document.getElementById("post-category-page-title").classList.add('dark');
+            for (let i=0; i<document.getElementsByClassName("post-nav").length; i++){
+                document.getElementsByClassName("post-nav")[i].classList.add('dark');
+            }
+          }
+          else {
+            document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-off.png";
+            document.body.classList.remove('dark');
+            document.getElementById("post-category-page-title").classList.remove('dark');
+            for (let i=0; i<document.getElementsByClassName("post-nav").length; i++){
+                document.getElementsByClassName("post-nav")[i].classList.remove('dark');
+            }
+          }
+        }
+  
+        setDarkMode(localStorage.getItem("darkMode"));
+        
+        document.getElementById("dark-mode-icon").addEventListener('click', function() {
+          if (localStorage.getItem("darkMode") == "true"){
+            localStorage.setItem("darkMode", false);
+          }
+          else {
+            localStorage.setItem("darkMode", true);
+          }
+          setDarkMode(localStorage.getItem("darkMode"));
+        })
+      </script>
 </body>
 </html>

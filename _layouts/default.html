@@ -7,7 +7,9 @@
   </head>
   <body>
     <h1 id="blog-title">pmaarks.github.io</h1>
-    <p id="version" onclick="document.location.href='https://github.com/pmaarks/pmaarks.github.io'">v240809</p>
+    <div class="dark-mode">
+      <img src="../../../../assets/icons/dark-mode-off.png" id="dark-mode-icon">
+    </div>
     {% include navigation_category.html %}
     <div class="spacer"></div>
     {% include latest_posts.html %}
@@ -15,10 +17,12 @@
     <div class="spacer"></div>
     {% include navigation_me.html %}
     <div class="spacer"></div>
+    <p id="version" onclick="document.location.href='https://github.com/pmaarks/pmaarks.github.io'">v240810</p>
     <hr/>
     <div class="spacer"></div>
 
     <script class="post-comments"
+        id="giscus"
         src="https://giscus.app/client.js"
         data-repo="pmaarks/pmaarks.github.io"
         data-repo-id="R_kgDOMZNtdA"
@@ -33,6 +37,54 @@
         data-lang="ko"
         crossorigin="anonymous"
         async>
+    </script>
+    <script>
+      const setDarkMode = (isOn) => {
+        if (isOn == "true"){
+          document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-on.png";
+          document.getElementById("blog-title").classList.add('dark');
+          document.body.classList.add('dark');
+          document.getElementById("category-title").classList.add('dark');
+          document.getElementById("latest-posts-title").classList.add('dark');
+          document.getElementById("version").classList.add('dark');
+          for (let i=0; i<document.getElementsByClassName("latest-post-title").length; i++){
+            document.getElementsByClassName("latest-post-title")[i].classList.add('dark');
+            document.getElementsByClassName("latest-post-wrapper")[i].classList.add('dark');
+          }
+          for (let i=0; i<document.getElementsByClassName("category-nav").length; i++){
+            document.getElementsByClassName("category-nav")[i].classList.add('dark');
+          }
+          document.getElementById("giscus").setAttribute('data-theme', "dark");
+        }
+        else {
+          document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-off.png";
+          document.getElementById("blog-title").classList.remove('dark');
+          document.body.classList.remove('dark');
+          document.getElementById("category-title").classList.remove('dark');
+          document.getElementById("latest-posts-title").classList.remove('dark');
+          document.getElementById("version").classList.remove('dark');
+          for (let i=0; i<document.getElementsByClassName("latest-post-title").length; i++){
+            document.getElementsByClassName("latest-post-title")[i].classList.remove('dark');
+            document.getElementsByClassName("latest-post-wrapper")[i].classList.remove('dark');
+          }
+          for (let i=0; i<document.getElementsByClassName("category-nav").length; i++){
+            document.getElementsByClassName("category-nav")[i].classList.remove('dark');
+          }
+          document.getElementById("giscus").setAttribute('data-theme', "light");
+        }
+      }
+
+      setDarkMode(localStorage.getItem("darkMode"));
+      
+      document.getElementById("dark-mode-icon").addEventListener('click', function() {
+        if (localStorage.getItem("darkMode") == "true"){
+          localStorage.setItem("darkMode", false);
+        }
+        else {
+          localStorage.setItem("darkMode", true);
+        }
+        setDarkMode(localStorage.getItem("darkMode"));
+      })
     </script>
   </body>
 </html>

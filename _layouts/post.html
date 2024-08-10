@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
+
+    <style>
+        p {
+            color: #000000;
+            transition: all 0.2s;
+        }
+    
+        p.dark {
+            color: #FFFFFF;
+            transition: all 0.2s;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="dark-mode">
+        <img src="../../../../assets/icons/dark-mode-off.png" id="dark-mode-icon">
+    </div>
     <div class="floating-buttons">
         <div class="link-buttons">
             <div class="menu-bar">
@@ -32,8 +48,8 @@
         </div>
     </div>
     <div class="post-view-wrapper">
-        <h1 class="post-view-title">{{ page.title }}</h1>
-        <p class="post-view-date">{{ page.date | date_to_string }}</p>
+        <h1 id="post-view-title">{{ page.title }}</h1>
+        <p id="post-view-date">{{ page.date | date_to_string }}</p>
         <div class="category-button-wrapper">
             {% for item in page.categories %}
                 {% if item == 'etc.' %}
@@ -43,13 +59,14 @@
                     {% endif %}
             {% endfor %}
         </div>
-        <div class="post-view-content">{{ content }}</div>
+        <div id="post-view-content">{{ content }}</div>
     </div>
     <div class="spacer"></div>
     <div class="spacer"></div>
 
 
     <script class="post-comments"
+        id="giscus"
         src="https://giscus.app/client.js"
         data-repo="pmaarks/pmaarks.github.io"
         data-repo-id="R_kgDOMZNtdA"
@@ -77,6 +94,44 @@
                 navBar.style.zIndex = -99;
             }
         });
+    </script>
+    <script>
+        const setDarkMode = (isOn) => {
+            if (isOn == "true"){
+              document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-on.png";
+              document.body.classList.add('dark');
+              document.getElementById("post-view-title").classList.add('dark');
+              document.getElementById("post-view-date").classList.add('dark');
+              document.getElementById("post-view-content").classList.add('dark');
+              for (let i=0; i<document.getElementsByTagName("p").length; i++){
+                document.getElementsByTagName("p")[i].classList.add('dark');
+              }
+              document.getElementById("giscus").setAttribute('data-theme', "dark");
+            }
+            else {
+              document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-off.png";
+              document.body.classList.remove('dark');
+              document.getElementById("post-view-title").classList.remove('dark');
+              document.getElementById("post-view-date").classList.remove('dark');
+              document.getElementById("post-view-content").classList.add('dark');
+              for (let i=0; i<document.getElementsByTagName("p").length; i++){
+                document.getElementsByTagName("p")[i].classList.remove('dark');
+              }
+              document.getElementById("giscus").setAttribute('data-theme', "light");
+            }
+          }
+    
+          setDarkMode(localStorage.getItem("darkMode"));
+          
+          document.getElementById("dark-mode-icon").addEventListener('click', function() {
+            if (localStorage.getItem("darkMode") == "true"){
+              localStorage.setItem("darkMode", false);
+            }
+            else {
+              localStorage.setItem("darkMode", true);
+            }
+            setDarkMode(localStorage.getItem("darkMode"));
+          })
     </script>
 </body>
 </html>
