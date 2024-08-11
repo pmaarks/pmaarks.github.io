@@ -22,7 +22,7 @@
 <br>
 <br>
 
-## LOG.
+## LOG
 -  v240810: 다크모드 추가
 -  v240808: floating button 상세 구현
 
