@@ -60,10 +60,10 @@
           for (let i=0; i<document.getElementsByClassName("category-nav").length; i++){
             document.getElementsByClassName("category-nav")[i].classList.add('dark');
           }
-          document.getElementById("giscus").setAttribute('data-theme', "dark");
+          document.getElementById("giscus").setAttribute('data-theme', "transparent_dark");
           sendMessage({
             setConfig: {
-              theme: 'dark'
+              theme: 'transparent_dark'
             }
           });
         }
