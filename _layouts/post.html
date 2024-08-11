@@ -106,6 +106,12 @@
         });
     </script>
     <script>
+        function sendMessage(message) {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+          }
+
         const setDarkMode = (isOn) => {
             if (isOn == "true"){
               document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-on.png";
@@ -120,6 +126,11 @@
                 document.getElementsByTagName("h2")[i].classList.add('dark');
               }
               document.getElementById("giscus").setAttribute('data-theme', "dark");
+              sendMessage({
+                setConfig: {
+                  theme: 'dark'
+                }
+              });
             }
             else {
               document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-off.png";
@@ -134,6 +145,11 @@
                 document.getElementsByTagName("h2")[i].classList.remove('dark');
               }
               document.getElementById("giscus").setAttribute('data-theme', "light");
+              sendMessage({
+                setConfig: {
+                  theme: 'light'
+                }
+              });
             }
           }
     
