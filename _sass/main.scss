@@ -598,6 +598,14 @@ hr {
     margin: auto;
 }
 
+#books-title {
+    color: #000000;
+}
+
+#books-title.dark {
+    color: #FFFFFF;
+}
+
 .book-grid {
     display: grid;
     margin: auto;

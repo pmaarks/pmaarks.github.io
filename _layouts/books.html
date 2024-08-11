@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
+    <div class="dark-mode">
+        <img src="../../../../assets/icons/dark-mode-off.png" id="dark-mode-icon">
+    </div>
     <div class="floating-buttons">
         <div class="link-buttons">
             <div class="menu-bar">
@@ -33,7 +36,7 @@
     </div>
 
     <div class="books-space">
-        <h1>{{ page.title }}</h1>
+        <h1 id="books-title">{{ page.title }}</h1>
         <div class="book-grid">
             {% for book in site.data.books %}
                 <div class="book-card">
@@ -60,6 +63,32 @@
                 navBar.style.zIndex = -99;
             }
         });
+    </script>
+    <script>
+        const setDarkMode = (isOn) => {
+            if (isOn == "true"){
+              document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-on.png";
+              document.body.classList.add('dark');
+              document.getElementById("books-title").classList.add('dark');
+            }
+            else {
+              document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-off.png";
+              document.body.classList.remove('dark');
+              document.getElementById("books-title").classList.remove('dark');
+            }
+          }
+    
+          setDarkMode(localStorage.getItem("darkMode"));
+          
+          document.getElementById("dark-mode-icon").addEventListener('click', function() {
+            if (localStorage.getItem("darkMode") == "true"){
+              localStorage.setItem("darkMode", false);
+            }
+            else {
+              localStorage.setItem("darkMode", true);
+            }
+            setDarkMode(localStorage.getItem("darkMode"));
+          })
     </script>
 </body>
 </html>

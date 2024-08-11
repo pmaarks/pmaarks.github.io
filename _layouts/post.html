@@ -15,6 +15,16 @@
             color: #FFFFFF;
             transition: all 0.2s;
         }
+
+        h2 {
+            color: #000000;
+            transition: all 0.2s;
+        }
+    
+        h2.dark {
+            color: #FFFFFF;
+            transition: all 0.2s;
+        }
     </style>
 </head>
 
@@ -106,6 +116,9 @@
               for (let i=0; i<document.getElementsByTagName("p").length; i++){
                 document.getElementsByTagName("p")[i].classList.add('dark');
               }
+              for (let i=0; i<document.getElementsByTagName("h2").length; i++){
+                document.getElementsByTagName("h2")[i].classList.add('dark');
+              }
               document.getElementById("giscus").setAttribute('data-theme', "dark");
             }
             else {
@@ -116,6 +129,9 @@
               document.getElementById("post-view-content").classList.add('dark');
               for (let i=0; i<document.getElementsByTagName("p").length; i++){
                 document.getElementsByTagName("p")[i].classList.remove('dark');
+              }
+              for (let i=0; i<document.getElementsByTagName("h2").length; i++){
+                document.getElementsByTagName("h2")[i].classList.remove('dark');
               }
               document.getElementById("giscus").setAttribute('data-theme', "light");
             }
