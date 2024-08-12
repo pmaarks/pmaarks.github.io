@@ -9,7 +9,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{site.baseurl}}/assets/favicons/favicon-16x16.png">
     <link rel="manifest" href="{{site.baseurl}}/assets/favicons/site.webmanifest">
     <style>
-        a:visited {
+        a:not(.category-button) {
+            text-decoration: none;
+            color: #0088ff;
+        }
+
+        a:visited:not(.category-button) {
             text-decoration: none;
             color: #0088ff;
         }
