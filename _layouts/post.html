@@ -76,7 +76,8 @@
     </div>
     <div class="spacer"></div>
     <div class="spacer"></div>
-
+    <div id="pop-up-background" onclick="imgClose()"></div>
+    <div id="pop-up-wrapper"></div>
 
     <script class="post-comments"
         id="giscus"
@@ -168,5 +169,27 @@
             setDarkMode(localStorage.getItem("darkMode"));
           })
     </script>
+    <script>
+        const wrapper = document.getElementById("pop-up-wrapper");
+        const background = document.getElementById("pop-up-background");
+
+        const imgClick = (src) => {
+            const popUp = document.createElement('img');
+            popUp.setAttribute('id', "temp-img");
+            popUp.setAttribute('src', src);
+            document.body.style.overflow = "hidden";
+            background.style.display = "block";
+            wrapper.appendChild(popUp);
+        }
+
+        const imgClose = () => {
+            const popUp = document.getElementById("temp-img");
+            popUp.remove();
+            document.body.style.overflow = "scroll";
+            background.style.display = "none";
+        }
+
+    </script>
+    
 </body>
 </html>
