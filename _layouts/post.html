@@ -29,12 +29,32 @@
             transition: all 0.2s;
         }
 
+        h1 {
+            color: #000000;
+            transition: all 0.2s;
+        }
+    
+        h1.dark {
+            color: #FFFFFF;
+            transition: all 0.2s;
+        }
+
         h2 {
             color: #000000;
             transition: all 0.2s;
         }
     
         h2.dark {
+            color: #FFFFFF;
+            transition: all 0.2s;
+        }
+
+        h3 {
+            color: #000000;
+            transition: all 0.2s;
+        }
+    
+        h3.dark {
             color: #FFFFFF;
             transition: all 0.2s;
         }
@@ -139,6 +159,12 @@
               for (let i=0; i<document.getElementsByTagName("h2").length; i++){
                 document.getElementsByTagName("h2")[i].classList.add('dark');
               }
+              for (let i=0; i<document.getElementsByTagName("h1").length; i++){
+                document.getElementsByTagName("h1")[i].classList.add('dark');
+              }
+              for (let i=0; i<document.getElementsByTagName("h3").length; i++){
+                document.getElementsByTagName("h3")[i].classList.add('dark');
+              }
               document.getElementById("giscus").setAttribute('data-theme', "transparent_dark");
               sendMessage({
                 setConfig: {
@@ -157,6 +183,12 @@
               }
               for (let i=0; i<document.getElementsByTagName("h2").length; i++){
                 document.getElementsByTagName("h2")[i].classList.remove('dark');
+              }
+              for (let i=0; i<document.getElementsByTagName("h1").length; i++){
+                document.getElementsByTagName("h1")[i].classList.remove('dark');
+              }
+              for (let i=0; i<document.getElementsByTagName("h3").length; i++){
+                document.getElementsByTagName("h3")[i].classList.remove('dark');
               }
               document.getElementById("giscus").setAttribute('data-theme', "light");
               sendMessage({
