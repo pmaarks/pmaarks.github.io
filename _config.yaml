@@ -13,9 +13,15 @@ comments:
 
 
 # Conversion
+# markdown: kramdown
+# highlighter: rouge
+
 markdown: kramdown
-highlighter: rouge
+kramdown:
+   syntax_highlighter_opts:
+      disable : true
 
 # Markdown Processing
 kramdown:
   input: GFM
+

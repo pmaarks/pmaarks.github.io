@@ -1,5 +1,5 @@
 # pmaarks.github.io
-<https://pmaarks.github.io/> (v240812)
+<https://pmaarks.github.io/> (v240813)
 
 <br>
 <br>
@@ -18,6 +18,7 @@
 <br>
 
 ## LOG
+-  v240813: prismjs 적용
 -  v240812: 이미지 팝업 추가
 -  v240810: 다크모드 추가
 -  v240808: floating button 상세 구현

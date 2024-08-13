@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{site.baseurl}}/assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{{site.baseurl}}/assets/favicons/favicon-16x16.png">
     <link rel="manifest" href="{{site.baseurl}}/assets/favicons/site.webmanifest">
+    <link href='{{ "/prism.css" | prepend: site.baseurl }}' rel="stylesheet">
     <style>
         a:not(.category-button) {
             text-decoration: none;
@@ -126,6 +127,7 @@
         crossorigin="anonymous"
         async>
     </script>
+    <script src='{{ "/prism.js" | prepend: site.baseurl }}'></script>
     <script>
         document.getElementsByClassName('menu-bar')[0].addEventListener('click', function() {
             let navBar = document.getElementsByClassName('nav-bar')[0];
