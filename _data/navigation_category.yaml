@@ -16,8 +16,8 @@
 - name: Books
   link: document.location.href='category/books.html'
 
-- name: Experiments
-  link: document.location.href='category/experiments.html'
+- name: Playground
+  link: document.location.href='category/playground.html'
 
 
 

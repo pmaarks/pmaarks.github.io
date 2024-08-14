@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
-    {% include favicons.html %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{site.baseurl}}/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{site.baseurl}}/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{site.baseurl}}/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="{{site.baseurl}}/assets/favicons/site.webmanifest">
 </head>
 {% include google_analytics.html %}
 <body>
     {% include dark_mode.html %}
     {% include floating_buttons.html %}
 
-    <div class="books-space">
-        <h1 id="books-title">{{ page.title }}</h1>
-        <div class="book-grid">
-            {% for book in site.data.books %}
-                <div class="book-card">
-                    <img class="book-cover" src="{{ book.cover }}">
-                    <div class="book-info">
-                        <p class="book-title">{{ book.title }}</p>
-                        <p class="post-author">- {{ book.author }}</p>
-                    </div>
+    <div class="playground-space">
+        <h1 id="playground-title">{{ page.title }}</h1>
+        <div class="toy-grid">
+            {% for toy in site.category.toys %}
+                <div>pp</div>
+                <div class="toy-card" onclick="document.location.href='{{ toy.url }}'">
+                    <p class="toy-title">{{ toy.title }}</p>
                 </div>
-            
             {% endfor %}
         </div>
     </div>
@@ -33,12 +32,12 @@
             if (isOn == "true"){
               document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-on.png";
               document.body.classList.add('dark');
-              document.getElementById("books-title").classList.add('dark');
+              document.getElementById("playground-title").classList.add('dark');
             }
             else {
               document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-off.png";
               document.body.classList.remove('dark');
-              document.getElementById("books-title").classList.remove('dark');
+              document.getElementById("playground-title").classList.remove('dark');
             }
           }
     

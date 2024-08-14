@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{site.baseurl}}/assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{site.baseurl}}/assets/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{site.baseurl}}/assets/favicons/favicon-16x16.png">
-    <link rel="manifest" href="{{site.baseurl}}/assets/favicons/site.webmanifest">
+    {% include favicons.html %}
     <link href='{{ "/prism.css" | prepend: site.baseurl }}' rel="stylesheet">
     <style>
         a:not(.category-button) {
@@ -20,12 +17,12 @@
             color: #0088ff;
         }
 
-        p {
+        p:not(.nav-bar-title, .nav-bar-component) {
             color: #000000;
             transition: all 0.2s;
         }
     
-        p.dark {
+        p:not(.nav-bar-title, .nav-bar-component).dark {
             color: #FFFFFF;
             transition: all 0.2s;
         }
@@ -63,34 +60,8 @@
 </head>
 {% include google_analytics.html %}
 <body>
-    <div class="dark-mode">
-        <img src="../../../../assets/icons/dark-mode-off.png" id="dark-mode-icon">
-    </div>
-    <div class="floating-buttons">
-        <div class="link-buttons">
-            <div class="menu-bar">
-                <img src="../../../../assets/icons/menu-bar.png" class="inner-icon">
-            </div>
-            <div class="home" onclick="document.location.href='/'">
-                <img src="../../../../assets/icons/home.png" class="inner-icon">
-            </div>
-        </div>
-        <div class="nav-bar" style="left: -310px;">
-            <p class="nav-bar-title">CATEGORY</p>
-            {% for item in site.data.navigation_category %}
-                {% if item.name == 'etc.' %}
-                    <p class="nav-bar-component" onclick="document.location.href='../../../../category/etc'">{{ item.name }}</p>
-                    {% else %}
-                        <p class="nav-bar-component" onclick="document.location.href='../../../../category/{{ item.name | downcase }}'">{{ item.name }}</p>
-                {% endif %}
-            {% endfor %}
-            <div class="nav-bar-spacer"></div>
-            <p class="nav-bar-title">ME</p>
-            {% for item in site.data.navigation_me %}
-                <p class="nav-bar-component" onclick="{{ item.link }}">{{ item.name }}</p>
-            {% endfor %}
-        </div>
-    </div>
+  {% include dark_mode.html %}
+  {% include floating_buttons.html %}
     <div class="post-view-wrapper">
         <h1 id="post-view-title">{{ page.title }}</h1>
         <p id="post-view-date">{{ page.date | date_to_string }}</p>
@@ -128,19 +99,7 @@
         async>
     </script>
     <script src='{{ "/prism.js" | prepend: site.baseurl }}'></script>
-    <script>
-        document.getElementsByClassName('menu-bar')[0].addEventListener('click', function() {
-            let navBar = document.getElementsByClassName('nav-bar')[0];
-            if (navBar.style.left == '-310px') {
-                navBar.style.left = '0px';
-                navBar.style.zIndex = 99;
-                
-            } else {
-                navBar.style.left = '-310px';
-                navBar.style.zIndex = -99;
-            }
-        });
-    </script>
+    {% include side_bar_script.html %}
     <script>
         function sendMessage(message) {
             const iframe = document.querySelector('iframe.giscus-frame');

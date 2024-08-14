@@ -1,0 +1,25 @@
+<div class="floating-buttons">
+    <div class="link-buttons">
+        <div class="menu-bar">
+            <img src="../../../../assets/icons/menu-bar.png" class="inner-icon">
+        </div>
+        <div class="home" onclick="document.location.href='/'">
+            <img src="../../../../assets/icons/home.png" class="inner-icon">
+        </div>
+    </div>
+    <div class="nav-bar" style="left: -310px;">
+        <p class="nav-bar-title">CATEGORY</p>
+        {% for item in site.data.navigation_category %}
+            {% if item.name == 'etc.' %}
+                <p class="nav-bar-component" onclick="document.location.href='etc'">{{ item.name }}</p>
+                {% else %}
+                    <p class="nav-bar-component" onclick="document.location.href='{{ item.name | downcase }}'">{{ item.name }}</p>
+            {% endif %}
+        {% endfor %}
+        <div class="nav-bar-spacer"></div>
+        <p class="nav-bar-title">ME</p>
+        {% for item in site.data.navigation_me %}
+            <p class="nav-bar-component" onclick="{{ item.link }}">{{ item.name }}</p>
+        {% endfor %}
+    </div>
+</div>
