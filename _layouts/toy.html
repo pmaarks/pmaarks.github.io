@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    {% include favicons.html %}
+</head>
+{% include google_analytics.html %}
+<body>
+    {% include dark_mode.html %}
+    {% include floating_buttons.html %}
+    <div class="post-list">
+      <h1 id="post-category-page-title">{{ page.title }} {{ page.version }}</h1>
+      <div>
+          {{ content }}
+      </div>
+    </div>
+
+    {% include side_bar_script.html %}
+    <script class="post-comments"
+        id="giscus"
+        src="https://giscus.app/client.js"
+        data-repo="pmaarks/pmaarks.github.io"
+        data-repo-id="R_kgDOMZNtdA"
+        data-category="Comments"
+        data-category-id="DIC_kwDOMZNtdM4ChMSi"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="ko"
+        crossorigin="anonymous"
+        async>
+    </script>
+    <script>
+      function sendMessage(message) {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+
+      const setDarkMode = (isOn) => {
+        if (isOn == "true"){
+          document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-on.png";
+          document.body.classList.add('dark');
+          document.getElementById("post-category-page-title").classList.add('dark');
+
+          document.getElementById("giscus").setAttribute('data-theme', "transparent_dark");
+          sendMessage({
+            setConfig: {
+              theme: 'transparent_dark'
+            }
+          });
+        }
+        else {
+          document.getElementById("dark-mode-icon").src = "../../../../assets/icons/dark-mode-off.png";
+          document.body.classList.remove('dark');
+          document.getElementById("post-category-page-title").classList.remove('dark');
+          
+          document.getElementById("giscus").setAttribute('data-theme', "light");
+          sendMessage({
+            setConfig: {
+              theme: 'light'
+            }
+          });
+        }
+      }
+
+      setDarkMode(localStorage.getItem("darkMode"));
+      
+      document.getElementById("dark-mode-icon").addEventListener('click', function() {
+        if (localStorage.getItem("darkMode") == "true"){
+          localStorage.setItem("darkMode", false);
+        }
+        else {
+          localStorage.setItem("darkMode", true);
+        }
+        setDarkMode(localStorage.getItem("darkMode"));
+      })
+    </script>
+</body>
+</html>

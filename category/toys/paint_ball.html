@@ -1,0 +1,79 @@
+---
+layout: toy
+title: paint-ball
+version: 0.1
+---
+
+<div id="white-board">
+    <div id="ball"></div>
+</div>
+
+<script>
+    const ball = document.querySelector('#ball');
+    const whiteBoard = document.querySelector('#white-board');
+
+    const {width: boardWidth, height: boardHeight} = whiteBoard.getBoundingClientRect();
+    const {width: ballWidth, height: ballHeight} = ball.getBoundingClientRect();
+
+    let ballPositionX = 0;
+    let ballPositionY = 0;
+
+    let offsetX = 0;
+    let offsetY = 0;
+
+    let ballColorR = 0;
+    let ballColorG = 0;
+    let ballColorB = 0;
+
+    let x = 0;
+    let y = 0;
+
+    let ballOffsetX = 0;
+    let ballOffsetY = 0;
+
+    let isDown = false;
+
+    const mouseMove = (event) => {
+        if (isDown){
+            const dx = event.clientX - x;
+            const dy = event.clientY - y;
+
+            const limitX = boardWidth - ballWidth;
+            const limitY = boardHeight - ballHeight;
+
+            ball.style.left = `${Math.min(Math.max(0, ballOffsetX + dx), limitX)}px`;
+            ball.style.top = `${Math.min(Math.max(0, ballOffsetY + dy), limitY)}px`;
+        }    
+    }
+
+    const mouseUp = (event) => {
+        isDown = false;
+
+        ball.style.backgroundColor = "#FFFFFF";
+        whiteBoard.style.backgroundColor = `rgb(${ballColorR}, ${ballColorG}, ${ballColorB})`;
+        ball.style.width = "50px";
+        ball.style.height = "50px";
+    }
+
+    ball.addEventListener('mousedown', (event) => {
+        document.addEventListener('mouseup', mouseUp);
+        isDown = true;
+
+        x = event.clientX;
+        y = event.clientY;
+
+        ballOffsetX = ball.offsetLeft;
+        ballOffsetY = ball.offsetTop;
+
+        ballColorR = Math.floor(Math.random() * 255);
+        ballColorG = Math.floor(Math.random() * 255);
+        ballColorB = Math.floor(Math.random() * 255);
+        ball.style.backgroundColor = `rgb(${ballColorR}, ${ballColorG}, ${ballColorB})`;
+        ball.style.width = "80px";
+        ball.style.height = "80px";
+
+        
+    });
+
+    document.addEventListener('mousemove', mouseMove);
+</script>

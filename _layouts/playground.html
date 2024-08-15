@@ -17,9 +17,8 @@
     <div class="playground-space">
         <h1 id="playground-title">{{ page.title }}</h1>
         <div class="toy-grid">
-            {% for toy in site.category.toys %}
-                <div>pp</div>
-                <div class="toy-card" onclick="document.location.href='{{ toy.url }}'">
+            {% for toy in site.data.toys %}
+                <div class="toy-card" onclick="document.location.href='toys/{{ toy.url }}'">
                     <p class="toy-title">{{ toy.title }}</p>
                 </div>
             {% endfor %}
