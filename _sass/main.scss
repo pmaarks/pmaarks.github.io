@@ -734,9 +734,11 @@ hr {
     margin: auto;
     background-color: #FFFFFF;
     transition: all 0.3s;
+    overflow: hidden;
 }
 
 #ball {
+    z-index: 99;
     position: absolute;
     left: 0;
     top: 0;
@@ -745,8 +747,19 @@ hr {
     border-radius: 100px;
     border-style: solid;
     background-color: #000000;
+    transform-origin: center;
 
     transition-property: width, height, background-color;
-    transition-duration: 0.1s, 0.1s, 0.1s;
+    transition-duration: 0.1s, 0.1s, 0.2s;
+}
+
+.wave {
+    z-index: 0;
+    position: absolute;
+    border-radius: 99999px;
+    transform-origin: center;
+    transition-property: width, height, top, left;
+    transition-timing-function: ease-out;
+    transition-duration: 0.6s, 0.6s, 0.6s, 0.6s;
 }
 

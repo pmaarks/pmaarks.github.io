@@ -1,7 +1,7 @@
 ---
 layout: toy
 title: paint-ball
-version: 0.1
+version: 1.0
 ---
 
 <div id="white-board">
@@ -32,6 +32,8 @@ version: 0.1
     let ballOffsetY = 0;
 
     let isDown = false;
+    let waveDone = false;
+
 
     const mouseMove = (event) => {
         if (isDown){
@@ -46,19 +48,16 @@ version: 0.1
         }    
     }
 
-    const mouseUp = (event) => {
-        isDown = false;
-
-        //ball.style.backgroundColor = "#FFFFFF";
-        setTimeout(function(){
-            whiteBoard.style.backgroundColor = `rgb(${ballColorR}, ${ballColorG}, ${ballColorB})`;
-        }, 100);
-        ball.style.width = "50px";
-        ball.style.height = "50px";
-    }
-
-    ball.addEventListener('mousedown', (event) => {
+    const mouseDown = (event) => {
         document.addEventListener('mouseup', mouseUp);
+
+        if (document.getElementsByClassName('wave').length > 0 && waveDone){
+            for(let i=0; i<document.getElementsByClassName('wave').length; i++){
+                document.getElementsByClassName('wave')[i].remove();
+            }
+            waveDone = false;
+        }
+
         isDown = true;
 
         x = event.clientX;
@@ -74,9 +73,38 @@ version: 0.1
         ball.style.borderColor = `rgb(${ballColorR+20}, ${ballColorG+20}, ${ballColorB+20})`;
         ball.style.width = "80px";
         ball.style.height = "80px";
+    }
 
-        
-    });
+    const mouseUp = (event) => {
+        isDown = false;
+
+        whiteBoard.style.backgroundColor = `rgb(${ballColorR}, ${ballColorG}, ${ballColorB})`;
+        ball.style.width = "50px";
+        ball.style.height = "50px";
+
+        let wave = document.createElement('div');
+        wave.setAttribute('class', 'wave');
+        wave.style.backgroundColor = `rgb(${ballColorR}, ${ballColorG}, ${ballColorB})`;
+;
+        wave.style.left = `${parseInt(ball.style.left)}px`;
+        wave.style.top = `${parseInt(ball.style.top)}px`;
+        wave.style.width = '0px';
+        wave.style.height = '0px';
+
+        whiteBoard.appendChild(wave);
+        setTimeout(function(){
+            wave.style.width = '2400px';
+            wave.style.height = '2400px';
+            wave.style.left = `${parseInt(ball.style.left) - 1075}px`;
+            wave.style.top = `${parseInt(ball.style.top) - 1075}px`;
+        }, 1);
+
+        setTimeout(function(){
+            waveDone = true;
+        }, 600);
+    }
+
+    ball.addEventListener('mousedown', mouseDown);
 
     document.addEventListener('mousemove', mouseMove);
 </script>
