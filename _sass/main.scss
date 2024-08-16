@@ -30,11 +30,16 @@ body.dark {
     transition: all 0.2s;
 }
 
-.dark-mode{
+.dark-mode {
     position: fixed;
     top: 10px;
     right: 10px;
+    opacity: 25%;
     z-index: 99;
+}
+
+.dark-mode {
+    transition: all 0.2s;
 }
 
 #dark-mode-icon {
@@ -45,15 +50,13 @@ body.dark {
     height: 20px;
     text-align: center;
     background-color: lightgray;
-    opacity: 25%;
     transition: all 0.2s;
 }
 
-#dark-mode-icon:hover {
-    background-color: lightgray;
-    opacity: 50%;
-    transition: all 0.2s;
-}
+// #dark-mode-icon:hover {
+//     background-color: lightgray;
+//     transition: all 0.2s;
+// }
 
 #dark-mode-icon > img {
     width: 20px;
@@ -363,7 +366,6 @@ hr {
 }
 
 .menu-bar:hover {
-    background-color: lightgray;
     opacity: 50%;
     transition: all 0.2s;
 }
@@ -741,6 +743,7 @@ hr {
     width: 50px;
     height: 50px;
     border-radius: 100px;
+    border-style: solid;
     background-color: #000000;
 
     transition-property: width, height, background-color;

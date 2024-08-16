@@ -1,5 +1,5 @@
 <script>
-    document.getElementsByClassName('menu-bar')[0].addEventListener('click', function() {
+    document.getElementsByClassName('menu-bar')[0].addEventListener('click', () => {
         let navBar = document.getElementsByClassName('nav-bar')[0];
         if (navBar.style.left == '-310px') {
             navBar.style.left = '0px';
@@ -9,5 +9,61 @@
             navBar.style.left = '-310px';
             navBar.style.zIndex = -99;
         }
+    });
+</script>
+
+<script>
+    let menuBar = document.querySelector('.menu-bar');
+    let home = document.querySelector('.home');
+    let darkModeButton = document.querySelector('.dark-mode');
+
+    menuBar.addEventListener('mouseenter', () => {
+        menuBar.style.opacity = '50%';
+    });
+
+    menuBar.addEventListener('mouseleave', () => {
+        menuBar.style.opacity = '25%';
+    });
+
+    menuBar.addEventListener('mousedown', () => {
+        menuBar.style.opacity = '75%';
+    });
+
+    menuBar.addEventListener('mouseup', () => {
+        menuBar.style.opacity = '50%';
+    });
+
+
+    home.addEventListener('mouseenter', () => {
+        home.style.opacity = '50%';
+    });
+
+    home.addEventListener('mouseleave', () => {
+        home.style.opacity = '25%';
+    });
+
+    home.addEventListener('mousedown', () => {
+        home.style.opacity = '75%';
+    });
+
+    home.addEventListener('mouseup', () => {
+        home.style.opacity = '50%';
+    });
+
+
+    darkModeButton.addEventListener('mouseenter', () => {
+        darkModeButton.style.opacity = '50%';
+    });
+
+    darkModeButton.addEventListener('mouseleave', () => {
+        darkModeButton.style.opacity = '25%';
+    });
+
+    darkModeButton.addEventListener('mousedown', () => {
+        darkModeButton.style.opacity = '75%';
+    });
+
+    darkModeButton.addEventListener('mouseup', () => {
+        darkModeButton.style.opacity = '50%';
     });
 </script>

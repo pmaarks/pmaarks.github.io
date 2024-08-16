@@ -49,8 +49,10 @@ version: 0.1
     const mouseUp = (event) => {
         isDown = false;
 
-        ball.style.backgroundColor = "#FFFFFF";
-        whiteBoard.style.backgroundColor = `rgb(${ballColorR}, ${ballColorG}, ${ballColorB})`;
+        //ball.style.backgroundColor = "#FFFFFF";
+        setTimeout(function(){
+            whiteBoard.style.backgroundColor = `rgb(${ballColorR}, ${ballColorG}, ${ballColorB})`;
+        }, 100);
         ball.style.width = "50px";
         ball.style.height = "50px";
     }
@@ -65,10 +67,11 @@ version: 0.1
         ballOffsetX = ball.offsetLeft;
         ballOffsetY = ball.offsetTop;
 
-        ballColorR = Math.floor(Math.random() * 255);
-        ballColorG = Math.floor(Math.random() * 255);
-        ballColorB = Math.floor(Math.random() * 255);
+        ballColorR = Math.floor(Math.random() * 235);
+        ballColorG = Math.floor(Math.random() * 235);
+        ballColorB = Math.floor(Math.random() * 235);
         ball.style.backgroundColor = `rgb(${ballColorR}, ${ballColorG}, ${ballColorB})`;
+        ball.style.borderColor = `rgb(${ballColorR+20}, ${ballColorG+20}, ${ballColorB+20})`;
         ball.style.width = "80px";
         ball.style.height = "80px";
 

@@ -1,5 +1,5 @@
 # pmaarks.github.io
-<https://pmaarks.github.io/> (v240813)
+<https://pmaarks.github.io/> (v240816)
 
 <br>
 <br>
@@ -18,6 +18,8 @@
 <br>
 
 ## LOG
+-  v240816: floating 버튼 클릭 반응 추가
+-  v240815: paint-ball 추가 (Playground)
 -  v240813: prismjs 적용
 -  v240812: 이미지 팝업 추가
 -  v240810: 다크모드 추가
