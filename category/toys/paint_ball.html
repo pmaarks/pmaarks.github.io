@@ -93,15 +93,15 @@ version: 1.0
 
         whiteBoard.appendChild(wave);
         setTimeout(function(){
-            wave.style.width = '2400px';
-            wave.style.height = '2400px';
-            wave.style.left = `${parseInt(ball.style.left) - 1075}px`;
-            wave.style.top = `${parseInt(ball.style.top) - 1075}px`;
+            wave.style.width = '5200px';
+            wave.style.height = '5200px';
+            wave.style.left = `${parseInt(ball.style.left) - 2200}px`;
+            wave.style.top = `${parseInt(ball.style.top) - 2200}px`;
         }, 1);
 
         setTimeout(function(){
             waveDone = true;
-        }, 600);
+        }, 800);
     }
 
     ball.addEventListener('mousedown', mouseDown);
