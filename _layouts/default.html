@@ -9,9 +9,7 @@
   {% include google_analytics.html %}
   <body>
     <h1 id="blog-title">pmaarks.github.io</h1>
-    <div class="dark-mode">
-      <img src="../../../../assets/icons/dark-mode-off.png" id="dark-mode-icon">
-    </div>
+    {% include dark_mode.html %}
     {% include navigation_category.html %}
     <div class="spacer"></div>
     {% include latest_posts.html %}
@@ -103,6 +101,25 @@
         }
         setDarkMode(localStorage.getItem("darkMode"));
       })
+    </script>
+    <script>
+      let darkModeButton = document.querySelector('.dark-mode');
+
+      darkModeButton.addEventListener('mouseenter', () => {
+          darkModeButton.style.opacity = '50%';
+      });
+
+      darkModeButton.addEventListener('mouseleave', () => {
+          darkModeButton.style.opacity = '25%';
+      });
+
+      darkModeButton.addEventListener('mousedown', () => {
+          darkModeButton.style.opacity = '75%';
+      });
+
+      darkModeButton.addEventListener('mouseup', () => {
+          darkModeButton.style.opacity = '50%';
+      });
     </script>
   </body>
 </html>
