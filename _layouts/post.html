@@ -81,6 +81,64 @@
     <div id="pop-up-background" onclick="imgClose()"></div>
     <div id="pop-up-wrapper"></div>
 
+    <div id="end-post">
+      {% assign prev = page %}
+      {% for i in (0...99) %}
+        {% assign prev = prev.previous %}
+        {% if prev.categories[0] == page.categories[0] %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign next = page %}
+      {% for i in (0...99) %}
+        {% assign next = next.next %}
+        {% if next.categories[0] == page.categories[0] %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% if page.categories[0] == 'etc.' %}
+        {% assign categoryLink = "etc.html" %}
+      {% else %}
+        {% assign categoryLink = page.categories[0] | downcase %}
+      {% endif %}
+
+        <div id="prev-post" onclick="document.location.href='{{ prev.url }}'">
+          <div id="prev-post-icon">
+            <img id="prev-post-icon-inner" src="../../../../assets/icons/angle-left.png">
+          </div>
+          <div id="prev-post-text">
+            <div id="prev-post-ind">이전 포스트</div>
+            {% if prev.title != null %}
+            <div id="prev-post-title">{{ prev.title }}</div>
+            {% else %}
+            <div id="prev-post-title"></div>
+            {% endif %}
+          </div>
+        </div>
+        <div id="post-list" onclick="document.location.href='../../../../category/{{ categoryLink }}'">
+          <div id="post-list-ind">목록</div>
+          <div id="post-list-category">{{ page.categories[0] }}</div>
+        </div>
+        <div id="next-post" onclick="document.location.href='{{ next.url }}'">
+          <div id="next-post-text">
+            <div id="next-post-ind">다음 포스트</div>
+            {% if next.title != null %}
+            <div id="next-post-title">{{ next.title }}</div>
+            {% else %}
+            <div id="next-post-title"></div>
+            {% endif %}
+          </div>
+          <div id="next-post-icon">
+            <img id="next-post-icon-inner" src="../../../../assets/icons/angle-right.png">
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+
     <script class="post-comments"
         id="giscus"
         src="https://giscus.app/client.js"
@@ -193,6 +251,92 @@
             background.style.display = "none";
         }
 
+    </script>
+    <script>
+      if (document.getElementById('prev-post-title').innerText == ''){
+        document.getElementById('prev-post').style.visibility = "hidden";
+      }
+      else {
+        document.getElementById('prev-post').style.visibility = "visible";
+      }
+
+      if (document.getElementById('next-post-title').innerText == ''){
+        document.getElementById('next-post').style.visibility = "hidden";
+      }
+      else {
+        document.getElementById('next-post').style.visibility = "visible";
+      }
+
+      // ---------------------------------------------------------------
+      document.querySelector('#prev-post').addEventListener('mouseenter', () => {
+        document.querySelector('#prev-post-icon-inner').style.opacity = "50%";
+        document.querySelector('#prev-post').style.background = "#39753D";
+        document.querySelector('#prev-post-text').style.color = "#BEBEBE";
+      });
+
+      document.querySelector('#prev-post').addEventListener('mouseleave', () => {
+        document.querySelector('#prev-post-icon-inner').style.opacity = "25%";
+        document.querySelector('#prev-post').style.background = "#44904B";
+        document.querySelector('#prev-post-text').style.color = "#FFFFFF";
+      });
+
+      document.querySelector('#prev-post').addEventListener('mousedown', () => {
+        document.querySelector('#prev-post-icon-inner').style.opacity = "75%";
+        document.querySelector('#prev-post').style.background = "#244a26";
+        document.querySelector('#prev-post-text').style.color = "#959595";
+      });
+
+      document.querySelector('#prev-post').addEventListener('mouseup', () => {
+        document.querySelector('#prev-post-icon-inner').style.opacity = "50%";
+        document.querySelector('#prev-post').style.background = "#39753D";
+        document.querySelector('#prev-post-text').style.color = "#BEBEBE";
+      });
+
+      // ---------------------------------------------------------------
+      document.querySelector('#next-post').addEventListener('mouseenter', () => {
+        document.querySelector('#next-post-icon-inner').style.opacity = "50%";
+        document.querySelector('#next-post').style.background = "#39753D";
+        document.querySelector('#next-post-text').style.color = "#BEBEBE";
+      });
+
+      document.querySelector('#next-post').addEventListener('mouseleave', () => {
+        document.querySelector('#next-post-icon-inner').style.opacity = "25%";
+        document.querySelector('#next-post').style.background = "#44904B";
+        document.querySelector('#next-post-text').style.color = "#FFFFFF";
+      });
+
+      document.querySelector('#next-post').addEventListener('mousedown', () => {
+        document.querySelector('#next-post-icon-inner').style.opacity = "75%";
+        document.querySelector('#next-post').style.background = "#244a26";
+        document.querySelector('#next-post-text').style.color = "#959595";
+      });
+
+      document.querySelector('#next-post').addEventListener('mouseup', () => {
+        document.querySelector('#next-post-icon-inner').style.opacity = "50%";
+        document.querySelector('#next-post').style.background = "#39753D";
+        document.querySelector('#next-post-text').style.color = "#BEBEBE";
+      });
+
+      // ---------------------------------------------------------------
+      document.querySelector('#post-list').addEventListener('mouseenter', () => {
+        document.querySelector('#post-list').style.background = "#39753D";
+        document.querySelector('#post-list').style.color = "#BEBEBE";
+      });
+
+      document.querySelector('#post-list').addEventListener('mouseleave', () => {
+        document.querySelector('#post-list').style.background = "#44904B";
+        document.querySelector('#post-list').style.color = "#FFFFFF";
+      });
+
+      document.querySelector('#post-list').addEventListener('mousedown', () => {
+        document.querySelector('#post-list').style.background = "#244a26";
+        document.querySelector('#post-list').style.color = "#959595";
+      });
+
+      document.querySelector('#post-list').addEventListener('mouseup', () => {
+        document.querySelector('#post-list').style.background = "#39753D";
+        document.querySelector('#post-list').style.color = "#BEBEBE";
+      });
     </script>
     
 </body>

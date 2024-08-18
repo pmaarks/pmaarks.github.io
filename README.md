@@ -1,5 +1,5 @@
 # pmaarks.github.io
-<https://pmaarks.github.io/> (v240816)
+<https://pmaarks.github.io/> (v240819)
 
 <br>
 <br>
@@ -18,6 +18,9 @@
 <br>
 
 ## LOG
+-  v240819: 1) 이전/다음 포스트 이동 버튼 추가
+            2) 사이브바 경로 수정
+            3) CATEGORY 버튼 반응 추가
 -  v240816: floating 버튼 클릭 반응 추가
 -  v240815: paint-ball 추가 (Playground)
 -  v240813: prismjs 적용

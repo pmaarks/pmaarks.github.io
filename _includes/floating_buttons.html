@@ -8,12 +8,14 @@
         </div>
     </div>
     <div class="nav-bar" style="left: -310px;">
+        <p class="nav-bar-component" id="nav-bar-all-posts" onclick="document.location.href='{{ base.url }}/category/all-posts'">All Posts</p>
+        <div class="nav-bar-spacer"></div>
         <p class="nav-bar-title">CATEGORY</p>
         {% for item in site.data.navigation_category %}
             {% if item.name == 'etc.' %}
-                <p class="nav-bar-component" onclick="document.location.href='etc'">{{ item.name }}</p>
+                <p class="nav-bar-component" onclick="document.location.href='{{ base.url }}/category/etc'">{{ item.name }}</p>
                 {% else %}
-                    <p class="nav-bar-component" onclick="document.location.href='{{ item.name | downcase }}'">{{ item.name }}</p>
+                    <p class="nav-bar-component" onclick="document.location.href='{{ base.url }}/category/{{ item.name | downcase }}'">{{ item.name }}</p>
             {% endif %}
         {% endfor %}
         <div class="nav-bar-spacer"></div>

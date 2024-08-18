@@ -12,12 +12,12 @@
     {% include dark_mode.html %}
     {% include navigation_category.html %}
     <div class="spacer"></div>
-    {% include latest_posts.html %}
+    {% include all_posts.html %}
     <div class="spacer"></div>
     <div class="spacer"></div>
     {% include navigation_me.html %}
     <div class="spacer"></div>
-    <p id="version" onclick="document.location.href='https://github.com/pmaarks/pmaarks.github.io'">v240816</p>
+    <p id="version" onclick="document.location.href='https://github.com/pmaarks/pmaarks.github.io'">v240819</p>
     <hr/>
     <div class="spacer"></div>
 
@@ -57,9 +57,6 @@
             document.getElementsByClassName("latest-post-title")[i].classList.add('dark');
             document.getElementsByClassName("latest-post-wrapper")[i].classList.add('dark');
           }
-          for (let i=0; i<document.getElementsByClassName("category-nav").length; i++){
-            document.getElementsByClassName("category-nav")[i].classList.add('dark');
-          }
           document.getElementById("giscus").setAttribute('data-theme', "transparent_dark");
           sendMessage({
             setConfig: {
@@ -77,9 +74,6 @@
           for (let i=0; i<document.getElementsByClassName("latest-post-title").length; i++){
             document.getElementsByClassName("latest-post-title")[i].classList.remove('dark');
             document.getElementsByClassName("latest-post-wrapper")[i].classList.remove('dark');
-          }
-          for (let i=0; i<document.getElementsByClassName("category-nav").length; i++){
-            document.getElementsByClassName("category-nav")[i].classList.remove('dark');
           }
           document.getElementById("giscus").setAttribute('data-theme', "light");
           sendMessage({
@@ -120,6 +114,30 @@
       darkModeButton.addEventListener('mouseup', () => {
           darkModeButton.style.opacity = '50%';
       });
+    </script>
+    <script>
+      for (let i=0; i<document.querySelectorAll('.category-nav').length; i++){
+        document.querySelectorAll('.category-nav')[i].addEventListener('mouseenter', () => {
+          document.querySelectorAll('.category-nav')[i].style.background = "#39753D";
+          document.querySelectorAll('.category-nav')[i].style.color = "#BEBEBE";
+        });
+  
+        document.querySelectorAll('.category-nav')[i].addEventListener('mouseleave', () => {
+          document.querySelectorAll('.category-nav')[i].style.background = "#44904B";
+          document.querySelectorAll('.category-nav')[i].style.color = "#FFFFFF";
+        });
+  
+        document.querySelectorAll('.category-nav')[i].addEventListener('mousedown', () => {
+          document.querySelectorAll('.category-nav')[i].style.background = "#244a26";
+          document.querySelectorAll('.category-nav')[i].style.color = "#959595";
+        });
+  
+        document.querySelectorAll('.category-nav')[i].addEventListener('mouseup', () => {
+          document.querySelectorAll('.category-nav')[i].style.background = "#39753D";
+          document.querySelectorAll('.category-nav')[i].style.color = "#BEBEBE";
+        });
+      }
+      
     </script>
   </body>
 </html>
