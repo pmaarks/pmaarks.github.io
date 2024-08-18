@@ -582,6 +582,7 @@ hr {
 
 .image {
     margin: auto;
+    cursor: pointer;
 }
 
 .caption {
@@ -740,6 +741,7 @@ hr {
     justify-content: left;
     gap: 20px;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 #prev-post-text {
@@ -783,6 +785,7 @@ hr {
     justify-content: right;
     gap: 20px;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 #next-post-text {
@@ -826,6 +829,7 @@ hr {
     justify-content: center;
     gap: 1.5vh;
     transition: all 0.2s;
+    cursor: pointer;
 }
 
 #post-list-ind {
