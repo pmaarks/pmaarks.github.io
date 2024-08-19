@@ -56,6 +56,16 @@
             color: #FFFFFF;
             transition: all 0.2s;
         }
+
+        li {
+          color: #000000;
+          transition: all 0.2s;
+        }
+
+        li.dark {
+          color: #FFFFFF;
+          transition: all 0.2s;
+        }
     </style>
 </head>
 {% include google_analytics.html %}
@@ -184,6 +194,9 @@
               for (let i=0; i<document.getElementsByTagName("h3").length; i++){
                 document.getElementsByTagName("h3")[i].classList.add('dark');
               }
+              for (let i=0; i<document.getElementsByTagName("li").length; i++){
+                document.getElementsByTagName("li")[i].classList.add('dark');
+              }
               document.getElementById("giscus").setAttribute('data-theme', "transparent_dark");
               sendMessage({
                 setConfig: {
@@ -208,6 +221,9 @@
               }
               for (let i=0; i<document.getElementsByTagName("h3").length; i++){
                 document.getElementsByTagName("h3")[i].classList.remove('dark');
+              }
+              for (let i=0; i<document.getElementsByTagName("li").length; i++){
+                document.getElementsByTagName("li")[i].classList.remove('dark');
               }
               document.getElementById("giscus").setAttribute('data-theme', "light");
               sendMessage({
