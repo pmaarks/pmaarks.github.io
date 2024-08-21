@@ -1,11 +1,11 @@
 # pmaarks.github.io
-<https://pmaarks.github.io/> (v240819)
+<https://pmaarks.github.io/> (v240822)
 
 <br>
 <br>
 
 ## TODO
- - README.md 수정
+
 
 <br>
 <br>
@@ -18,6 +18,7 @@
 <br>
 
 ## LOG
+-  v240822: 날짜 표기법 변경
 -  v240819:<br>
 &emsp;1) 이전/다음 포스트 이동 버튼 추가<br>
 &emsp;2) 사이브바 경로 수정<br>

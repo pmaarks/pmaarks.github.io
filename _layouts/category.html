@@ -17,7 +17,7 @@
             <div class="post-nav" onclick="document.location.href='{{ post.url }}'">
                 <p class="post-title">{{ post.title }}</p>
                 <p class="post-summary">{{ post.summary }}</p>
-                <p class="post-date">{{ post.date | date_to_string }}</p>
+                <p class="post-date">{{ post.date | date: "%Y.%-m.%-d " }}</p>
             </div>
             {% endif %}
         {% endfor %}

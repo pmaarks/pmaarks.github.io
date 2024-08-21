@@ -74,7 +74,7 @@
   {% include floating_buttons.html %}
     <div class="post-view-wrapper">
         <h1 id="post-view-title">{{ page.title }}</h1>
-        <p id="post-view-date">{{ page.date | date_to_string }}</p>
+        <p id="post-view-date">{{ page.date | date: "%Y.%-m.%-d " }}</p>
         <div class="category-button-wrapper">
             {% for item in page.categories %}
                 {% if item == 'etc.' %}

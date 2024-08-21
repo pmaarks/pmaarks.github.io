@@ -15,7 +15,7 @@
             <div class="latest-post-wrapper">
                 <p class="latest-post-title">{{ post.title }}</p>
                 <p class="latest-post-summary">{{ post.summary }}</p>
-                <p class="latest-post-date">{{ post.date | date_to_string }}</p>
+                <p class="latest-post-date">{{ post.date | date: "%Y.%-m.%-d " }}</p>
             </div>
         </div>
         <div class="latest-post-divider"></div>
