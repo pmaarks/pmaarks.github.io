@@ -5,5 +5,15 @@ version: AA
 ---
 
 <div id="white-board">
-    <div id="grid"></div>
+    <div id="grid">
+        {% for i in (0...17) %}
+            {% for i in (0...10) %}
+                <div class="cell"></div>
+            {% endfor %}
+        {% endfor %}
+    </div>
 </div>
+
+<script>
+
+</script>
