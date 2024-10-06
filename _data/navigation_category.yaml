@@ -19,8 +19,8 @@
 - name: Development
   link: document.location.href='category/development.html'
 
-- name: Note
-  link: document.location.href='category/Note.html'
+- name: Notes
+  link: document.location.href='category/Notes.html'
 
 - name: Playground
   link: document.location.href='category/playground.html'
