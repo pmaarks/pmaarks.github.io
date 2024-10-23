@@ -1,19 +1,26 @@
 ---
 layout: toy
 title: drag-n-lock
-version: AA
+version: 0
 ---
 
 <div id="white-board">
     <div id="grid">
         {% for i in (0...17) %}
-            {% for i in (0...10) %}
-                <div class="cell"></div>
+            {% for j in (0...10) %}
+                <div class="cell" id="grid{{ i }}_{{ j }}" ondblclick="gridDoubleClick(this)"></div>
             {% endfor %}
         {% endfor %}
     </div>
 </div>
 
 <script>
-
+    const gridDoubleClick = (target) => {
+        if (target.style.backgroundColor == "red"){
+            target.removeAttribute("style");
+        }
+        else{
+            target.style.backgroundColor = "red";
+        } 
+    }
 </script>
