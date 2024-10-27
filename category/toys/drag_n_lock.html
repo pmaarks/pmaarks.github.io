@@ -18,6 +18,9 @@ version: 0
     const cellDoubleClick = (target) => {
         if (target.style.backgroundColor === "red") {
             target.style.backgroundColor = "white";
+            target.style.borderColor = "#cccccc";
+            target.style.borderWidth = "1px";
+            target.style.zIndex = "1";
             target.removeEventListener('mouseenter', magnetHover);
             target.removeEventListener('mouseleave', magnetHoverOut);
         } else {
