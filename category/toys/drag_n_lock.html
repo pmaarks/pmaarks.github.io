@@ -6,21 +6,38 @@ version: 0
 
 <div id="white-board">
     <div id="grid">
-        {% for i in (0...17) %}
-            {% for j in (0...10) %}
-                <div class="cell" id="grid{{ i }}_{{ j }}" ondblclick="gridDoubleClick(this)"></div>
+        {% for i in (0...19) %}
+            {% for j in (0...9) %}
+                    <div class="cell" id="cell{{ i }}_{{ j }}" ondblclick="cellDoubleClick(this)"></div>
             {% endfor %}
         {% endfor %}
     </div>
 </div>
 
 <script>
-    const gridDoubleClick = (target) => {
-        if (target.style.backgroundColor == "red"){
-            target.removeAttribute("style");
-        }
-        else{
+    const cellDoubleClick = (target) => {
+        if (target.style.backgroundColor === "red") {
+            target.style.backgroundColor = "white";
+            target.removeEventListener('mouseenter', magnetHover);
+            target.removeEventListener('mouseleave', magnetHoverOut);
+        } else {
             target.style.backgroundColor = "red";
+            target.addEventListener('mouseenter', magnetHover);
+            target.addEventListener('mouseleave', magnetHoverOut);
         } 
+    }
+    
+    const magnetHover = (event) => {
+        const magnet = event.target;
+        magnet.style.borderColor = "#03a7ff";
+        magnet.style.borderWidth = "3px";
+        magnet.style.zIndex = "2";
+    }
+    
+    const magnetHoverOut = (event) => {
+        const magnet = event.target;
+        magnet.style.borderColor = "#cccccc";
+        magnet.style.borderWidth = "1px";
+        magnet.style.zIndex = "1";
     }
 </script>

@@ -887,16 +887,19 @@ hr {
     margin: auto;
     width: 100%;
     height: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 1px;
+    gap: 2px;
     place-items: center center;
+    z-index: 0
 }
 
 .cell {
     border-style: solid;
     border-color: #cccccc;
-    border-width: 2px;
+    border-width: 1px;
+    border-radius: 4px;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
