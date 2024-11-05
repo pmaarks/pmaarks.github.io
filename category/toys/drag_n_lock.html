@@ -1,46 +1,180 @@
 ---
 layout: toy
-title: drag-n-lock
-version: 0
+title: easy-board
+version: 1.0
 ---
 
-<div id="white-board">
-    <div id="grid">
-        {% for i in (0...19) %}
-            {% for j in (0...9) %}
-                    <div class="cell" id="cell{{ i }}_{{ j }}" ondblclick="cellDoubleClick(this)"></div>
-            {% endfor %}
-        {% endfor %}
-    </div>
+<div id="white-board" ondblclick="createMagnet(event)">
 </div>
 
 <script>
-    const cellDoubleClick = (target) => {
-        if (target.style.backgroundColor === "red") {
-            target.style.backgroundColor = "white";
-            target.style.borderColor = "#cccccc";
-            target.style.borderWidth = "1px";
-            target.style.zIndex = "1";
-            target.removeEventListener('mouseenter', magnetHover);
-            target.removeEventListener('mouseleave', magnetHoverOut);
-        } else {
-            target.style.backgroundColor = "red";
-            target.addEventListener('mouseenter', magnetHover);
-            target.addEventListener('mouseleave', magnetHoverOut);
-        } 
+    const whiteBoard = document.getElementById('white-board');
+    let isDown = false;
+    let isPicked = false;
+    let initialWidth;
+    let initialHeight;
+    let startX;
+    let startY;
+
+    let selected = null;
+    let gapX = 0;
+    let gapY = 0;
+
+    let minWidth = 100;
+    let minHeight = 100;
+
+    const createMagnet = (event) => {
+        if(event.target.id == 'white-board'){
+            const colorR = Math.floor(Math.random() * 235);
+            const colorG = Math.floor(Math.random() * 235);
+            const colorB = Math.floor(Math.random() * 235);
+
+            const newMagnet = document.createElement('div');
+            newMagnet.setAttribute('class', 'magnet');
+            newMagnet.setAttribute('ondblclick', 'removeMagnet(event)');
+            newMagnet.setAttribute('onmouseenter', 'hoverMagnet(event)');
+            newMagnet.setAttribute('onmouseleave', 'unhoverMagnet(event)');
+            newMagnet.setAttribute('onmousedown', 'downMagnet(event)');
+            newMagnet.setAttribute('onclick', 'selectMagnet(event)');
+            newMagnet.style.backgroundColor = `rgb(${colorR}, ${colorG}, ${colorB})`;
+            newMagnet.style.width = '100px';
+            newMagnet.style.height = '100px';
+            newMagnet.style.zIndex = '1';
+            newMagnet.style.borderRadius = '10px';
+            newMagnet.style.position = 'absolute';
+            newMagnet.style.zIndex = '0';
+            newMagnet.style.top = event.offsetY - 50 + 'px';
+            newMagnet.style.left = event.offsetX - 50 + 'px';
+
+            const inputBox = document.createElement('textarea');
+            inputBox.setAttribute('class', 'input-box');
+            inputBox.style.backgroundColor = 'transparent';
+            inputBox.style.width = '80%';
+            inputBox.style.height = '80%';
+            inputBox.style.fontSize = '17px';
+            inputBox.style.border = 'none';
+            inputBox.style.outline = 'none';
+            inputBox.style.resize = 'none';
+            inputBox.style.position = 'absolute';
+            inputBox.style.left = '10%';
+            inputBox.style.top = '10%';
+            //inputBox.style.wordWrap = 'break-word';
+            //inputBox.style.wordBreak = 'break-all';
+            newMagnet.appendChild(inputBox);
+            
+
+            const pick = document.createElement('div');
+            pick.setAttribute('class', 'pick');
+            pick.setAttribute('onmousedown', 'pickDown(event)');
+            pick.style.width = '0';
+            pick.style.height = '0';
+            pick.style.borderRadius = '3px';
+            pick.style.borderBottom = '10px solid grey';
+            pick.style.borderRight = '10px solid grey';
+            pick.style.borderTop = '10px solid transparent';
+            pick.style.borderLeft = '10px solid transparent';
+            pick.style.position = 'absolute';
+            pick.style.bottom = '0';
+            pick.style.right = '0';
+            newMagnet.appendChild(pick);
+
+            whiteBoard.appendChild(newMagnet);
+        }
+    }
+
+    const removeMagnet = (event) => {
+        event.target.remove();
+    }
+
+    const hoverMagnet = (event) => {
+        event.target.style.boxShadow = '0 0 8px 3px #0ff';
+    }
+
+    const unhoverMagnet = (event) => {
+        event.target.style.boxShadow = 'none';
     }
     
-    const magnetHover = (event) => {
-        const magnet = event.target;
-        magnet.style.borderColor = "#03a7ff";
-        magnet.style.borderWidth = "3px";
-        magnet.style.zIndex = "2";
+    const downMagnet = (event) => {
+        if(event.target.className == 'pick'){
+            // selected = null;
+        }
+        else if (event.target.className == 'input-box'){
+            selected = event.target.parentNode;
+            selected.style.zIndex = '99999999';
+            isDown = true;
+    
+            gapX = event.clientX - selected.offsetLeft;
+            gapY = event.clientY - selected.offsetTop;
+    
+            selected.addEventListener('mousemove', moveMagnet);
+            selected.addEventListener('mouseup', upMagnet);
+        }
+        else {
+            selected = event.target;
+            selected.style.zIndex = '99999999';
+            isDown = true;
+    
+            gapX = event.clientX - selected.offsetLeft;
+            gapY = event.clientY - selected.offsetTop;
+    
+            selected.addEventListener('mousemove', moveMagnet);
+            selected.addEventListener('mouseup', upMagnet);
+        }
     }
     
-    const magnetHoverOut = (event) => {
-        const magnet = event.target;
-        magnet.style.borderColor = "#cccccc";
-        magnet.style.borderWidth = "1px";
-        magnet.style.zIndex = "1";
+    const upMagnet = () => {
+        isDown = false;
+        selected.style.zIndex = '0';
+        selected.removeEventListener('mousemove', moveMagnet);
+        selected.removeEventListener('mouseup', upMagnet);
+    }
+    
+    const moveMagnet = (event) => {
+        if (isDown && selected) {
+            selected.style.top = event.clientY - gapY + 'px';
+            selected.style.left = event.clientX - gapX + 'px';
+        }
+    }
+
+    const pickDown = (event) => {
+        isPicked = true;
+        startX = event.clientX;
+        startY = event.clientY;
+        selected = event.target.parentNode;
+
+        if (selected) {
+            initialWidth = selected.offsetWidth;
+            initialHeight = selected.offsetHeight;
+        }
+
+        window.addEventListener('mousemove', resizeMagnet);
+        window.addEventListener('mouseup', pickDrop);
+    }
+
+    const resizeMagnet = (event) => {
+        if (isPicked){
+            let newWidth = initialWidth + (event.clientX - startX);
+            let newHeight = initialHeight + (event.clientY - startY);
+
+            selected.style.width = Math.max(newWidth, minWidth) + 'px';
+            selected.style.height = Math.max(newHeight, minHeight) + 'px';
+        }
+    }
+
+    const pickDrop = (event) => {
+        isPicked = false;
+        selected = null;
+        window.removeEventListener('mousemove', resizeMagnet);
+        window.removeEventListener('mouseup', pickDrop);
+    }
+
+    const selectMagnet = (event) => {
+        const check = event.target;
+        if (check.className == 'magnet'){
+            check.children[0].focus();
+        }
+        else if (check.className == 'input-box'){
+            check.focus();
+        }
     }
 </script>
