@@ -83,7 +83,13 @@ version: 1.0
     }
 
     const removeMagnet = (event) => {
-        event.target.remove();
+        const removed = event.target;
+        if (removed.className == 'pick' || removed.className == 'input-box'){
+            removed.parentNode.remove();
+        }
+        else {
+            removed.remove();
+        }
     }
 
     const hoverMagnet = (event) => {
