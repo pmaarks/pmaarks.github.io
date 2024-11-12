@@ -848,11 +848,14 @@ hr {
     position: relative;
     width: 70vw;
     height: 70vh;
+    border-style: solid;
     border-radius: 20px;
+    border-color: #505050;
     margin: auto;
     background-color: #FFFFFF;
     transition: all 0.3s;
     overflow: hidden;
+
 }
 
 #ball {
