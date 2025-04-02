@@ -13,9 +13,6 @@
 - name: etc.
   link: document.location.href='category/etc.html'
 
-- name: Books
-  link: document.location.href='category/books.html'
-
 - name: Development
   link: document.location.href='category/development.html'
 
