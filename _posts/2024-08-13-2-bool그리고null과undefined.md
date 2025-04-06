@@ -3,6 +3,7 @@ layout: post
 categories: [JavaScript]
 title: 2. bool 그리고 null과 undefined
 summary: bool과 null, undefined에 대해서
+published: true
 ---
 
 # 1. bool

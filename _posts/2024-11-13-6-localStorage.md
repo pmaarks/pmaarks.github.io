@@ -3,6 +3,7 @@ layout: post
 categories: [JavaScript]
 title: 6. localStorage와 sessionStorage
 summary: localStorage와 sessionStorage에 대해서
+published: true
 ---
 
 블로그를 개발하면서 localStorage를 사용해본 경험이 있다.<br>
